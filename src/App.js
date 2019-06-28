@@ -73,7 +73,7 @@ const Tabs = ({ content }) => {
 
   return (
     <div>
-      <TabList label="Entertainment" onKeyDown={onKeyDown}>
+      <TabList label="Tabs" onKeyDown={onKeyDown}>
         {content.map((tab, i) => (
           <Tab
             key={i}
@@ -98,36 +98,20 @@ const Tabs = ({ content }) => {
 function App() {
   const content = [
     {
-      title: "Nils Frahm",
-      panel: (
-        <p>
-          Nils Frahm is a German musician, composer and record producer based in
-          Berlin. He is known for combining classical and electronic music and
-          for an unconventional approach to the piano in which he mixes a grand
-          piano, upright piano, Roland Juno-60, Rhodes piano, drum machine, and
-          Moog Taurus.
-        </p>
-      )
+      title: "One",
+      panel: <p>This is the content area for Tab One.</p>
     },
     {
-      title: "Agnes Obel",
-      panel: (
-        <p>
-          Agnes Caroline Thaarup Obel is a Danish singer/songwriter. Her first
-          album, Philharmonics, was released by PIAS Recordings on 4 October
-          2010 in Europe. Philharmonics was certified gold in June 2011 by the
-          Belgian Entertainment Association (BEA) for sales of 10,000 Copies.
-        </p>
-      )
+      title: "Two",
+      panel: <p>This is the content area for Tab Two.</p>
     },
     {
-      title: "Joke",
-      panel: (
-        <>
-          <p>Fear of complicated buildings:</p>
-          <p>A complex complex complex.</p>
-        </>
-      )
+      title: "Three",
+      panel: <p> This is the content area for Tab Three.</p>
+    },
+    {
+      title: "Four",
+      panel: <p> This is the content area for Tab Three.</p>
     }
   ];
   return (
