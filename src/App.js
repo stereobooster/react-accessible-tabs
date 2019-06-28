@@ -98,20 +98,20 @@ const Tabs = ({ content }) => {
 function App() {
   const content = [
     {
-      title: "One",
-      panel: <p>This is the content area for Tab One.</p>
+      title: "tab 1",
+      panel: <p>content 1</p>
     },
     {
-      title: "Two",
-      panel: <p>This is the content area for Tab Two.</p>
+      title: "tab 2",
+      panel: <p>content 2</p>
     },
     {
-      title: "Three",
-      panel: <p> This is the content area for Tab Three.</p>
+      title: "tab 3",
+      panel: <p>content 3</p>
     },
     {
-      title: "Four",
-      panel: <p> This is the content area for Tab Three.</p>
+      title: "tab 4",
+      panel: <p>content 4</p>
     }
   ];
   return (
