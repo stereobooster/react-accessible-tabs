@@ -72,8 +72,6 @@ const Tabs = ({ content }) => {
     [activeTab, content.length, setActiveTab]
   );
 
-  const id = tab.title.split(" ").join("-");
-
   return (
     <>
       <TabList label="Tabs" onKeyDown={onKeyDown}>
@@ -82,7 +80,7 @@ const Tabs = ({ content }) => {
             key={i}
             index={i}
             selected={activeTab === i}
-            id={id}
+            id={tab.title.split(" ").join("-")}
             onClick={setActiveTab}
           >
             {tab.title}
@@ -90,7 +88,11 @@ const Tabs = ({ content }) => {
         ))}
       </TabList>
       {content.map((tab, i) => (
-        <TabPanel key={i} id={id} selected={activeTab === i}>
+        <TabPanel
+          key={i}
+          id={tab.title.split(" ").join("-")}
+          selected={activeTab === i}
+        >
           {tab.panel}
         </TabPanel>
       ))}
