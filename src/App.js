@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./App.module.css";
+import "./index.css";
 
 const Tab = ({ children, selected = false, id, index, onClick }) => {
   const ref = useRef(null);
@@ -14,7 +15,7 @@ const Tab = ({ children, selected = false, id, index, onClick }) => {
       role="tab"
       type="button"
       aria-selected={selected}
-      aria-controls={`${id}-tab`}
+      aria-controls={`${id}-tab`.split(" ").join("-")}
       id={id}
       tabIndex={selected ? undefined : -1}
       onClick={() => onClick(index)}
@@ -35,7 +36,7 @@ const TabPanel = ({ children, id, selected = false }) => (
   <div
     tabIndex={0}
     role="tabpanel"
-    id={`${id}-tab`}
+    id={`${id}-tab-panel`.split(" ").join("-")}
     aria-labelledby={id}
     hidden={!selected}
   >
@@ -87,7 +88,11 @@ const Tabs = ({ content }) => {
         ))}
       </TabList>
       {content.map((tab, i) => (
-        <TabPanel key={i} id={tab.title} selected={activeTab === i}>
+        <TabPanel
+          key={i}
+          id={tab.title.split(" ").join("-")}
+          selected={activeTab === i}
+        >
           {tab.panel}
         </TabPanel>
       ))}
