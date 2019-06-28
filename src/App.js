@@ -15,8 +15,8 @@ const Tab = ({ children, selected = false, id, index, onClick }) => {
       role="tab"
       type="button"
       aria-selected={selected}
-      aria-controls={`${id}-tab`.split(" ").join("-")}
-      id={id}
+      aria-controls={`${id}-tab`}
+      id={`${id}-tab`}
       tabIndex={selected ? undefined : -1}
       onClick={() => onClick(index)}
       ref={ref}
@@ -36,7 +36,7 @@ const TabPanel = ({ children, id, selected = false }) => (
   <div
     tabIndex={0}
     role="tabpanel"
-    id={`${id}-tab-panel`.split(" ").join("-")}
+    id={`${id}-tab-panel`}
     aria-labelledby={id}
     hidden={!selected}
   >
@@ -72,15 +72,17 @@ const Tabs = ({ content }) => {
     [activeTab, content.length, setActiveTab]
   );
 
+  const id = tab.title.split(" ").join("-");
+
   return (
-    <div>
+    <>
       <TabList label="Tabs" onKeyDown={onKeyDown}>
         {content.map((tab, i) => (
           <Tab
             key={i}
             index={i}
             selected={activeTab === i}
-            id={tab.title}
+            id={id}
             onClick={setActiveTab}
           >
             {tab.title}
@@ -88,15 +90,11 @@ const Tabs = ({ content }) => {
         ))}
       </TabList>
       {content.map((tab, i) => (
-        <TabPanel
-          key={i}
-          id={tab.title.split(" ").join("-")}
-          selected={activeTab === i}
-        >
+        <TabPanel key={i} id={id} selected={activeTab === i}>
           {tab.panel}
         </TabPanel>
       ))}
-    </div>
+    </>
   );
 };
 
