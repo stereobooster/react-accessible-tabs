@@ -12,5 +12,3 @@ cache:
     - ~/.cache
 notifications:
   email: false
-script:
-  - $(npm bin)/cypress run --record
