@@ -17,7 +17,7 @@ const Tab = ({ children, selected = false, id, index, onClick }) => {
       aria-selected={selected}
       aria-controls={`${id}-tab`}
       id={`${id}-tab`}
-      tabIndex={selected ? undefined : -1}
+      tabIndex={selected ? 0 : -1}
       onClick={() => onClick(index)}
       ref={ref}
     >
