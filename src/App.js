@@ -106,7 +106,7 @@ const Tabs = ({ content, onDelete }) => {
 };
 
 function App() {
-  const content = [
+  const [content, setState] = useState([
     {
       title: "tab 1",
       panel: <p>content 1</p>
@@ -123,10 +123,10 @@ function App() {
       title: "tab 4",
       panel: <p>content 4</p>
     }
-  ];
+  ]);
 
   const onDelete = tab => {
-    content.splice(tab, 1);
+    setState(content.filter((_, i) => i !== tab));
   };
 
   return (
