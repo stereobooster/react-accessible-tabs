@@ -44,7 +44,7 @@ const TabPanel = ({ children, id, selected = false }) => (
   </div>
 );
 
-const Tabs = ({ content }) => {
+const Tabs = ({ content, onDelete }) => {
   const [activeTab, setActiveTab] = useState(0);
   const onKeyDown = useCallback(
     e => {
@@ -65,11 +65,16 @@ const Tabs = ({ content }) => {
           e.preventDefault();
           setActiveTab(content.length - 1);
           break;
+        case "Delete":
+          e.preventDefault();
+          setActiveTab(activeTab === 0 ? content.length - 1 : activeTab - 1);
+          onDelete(activeTab);
+          break;
         default:
           break;
       }
     },
-    [activeTab, content.length, setActiveTab]
+    [activeTab, content.length, setActiveTab, onDelete]
   );
 
   return (
@@ -119,9 +124,14 @@ function App() {
       panel: <p>content 4</p>
     }
   ];
+
+  const onDelete = tab => {
+    content.splice(tab, 1);
+  };
+
   return (
     <div className={styles.Wrapper}>
-      <Tabs content={content} />
+      <Tabs content={content} onDelete={onDelete} />
     </div>
   );
 }
