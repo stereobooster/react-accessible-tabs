@@ -67,7 +67,7 @@ describe("Tabs", () => {
     it("If focus is on the last tab, moves focus to the first tab.", () => {
       cy.contains("tab 4").click();
       cy.focused().type("{rightarrow}");
-      cy.wait(100); // we need to wait to make sure React has enough time to switch focus
+      cy.wait(200); // we need to wait to make sure React has enough time to switch focus
       cy.focused().contains("tab 1");
       // Activates the newly focused tab.
       cy.contains("content 1")
